@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+        
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+            text-align: center;
+        }
+        
+        .button {
+            background-color: #04AA6D;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 6px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .dotted {
+            border: 0;
+            border-bottom: 2px dotted;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h2>Customer panel</h2>
+    </center>
+    <br><br><br>
+    <center>
+        <form action="/addCustomer">
+            <label for="name">Name:</label>
+            <input class="dotted" type="text" id="name" name="name">
+            <label for="email">Email:</label>
+            <input class="dotted" type="text" id="email" name="email">
+
+            <label for="text">Contact No.</label>
+            <input class="dotted" type="text" id="contactNo" name="contactNo">
+            <label for="address">Address:</label>
+            <input class="dotted" type="text" id="address" name="address">
+            <input class="button" type="submit" value="Add Customer">
+        </form>
+    </center>
+
+
+    <form action="/allCustomers">
+        <br><br><br>
+        <center><input class="button" type="submit" value="Show all customers"></center>
+    </form>
+
+
+
+    <center>
+        <h3>List of customers</h3>
+    </center>
+
+
+    <table id="customers">
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact No.</th>
+            <th>Address</th>
+
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Naveen</td>
+            <td>sampleMail1@gmail.com</td>
+            <td>9966643494</td>
+            <td>India</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Praveen</td>
+            <td>sampleMail2@gmail.com</td>
+            <td>9984347947</td>
+            <td>US</td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>
