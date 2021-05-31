@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 const bodyParser = require("body-parser");
 var cors = require("cors");
+var JSAlert = require("js-alert");
+
+
+router.options('*', cors())
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(cors());
@@ -54,22 +58,19 @@ router.get("/allCustomers", function(req, res) {
 //   });
 
 
-router.post("/addCustomer", function(req, res) {
+router.get("/addCustomer", function(req, res) {
     console.log("Customer adding...");
-    // const newCustomer = new customers({
-    //     name: req.body.name,
-    //     email: req.body.email,
-    //     contactNo: req.body.contactNo,
-    //     address: req.body.address
-    // });
-    // newCustomer.save();
-    // res.redirect('/')
-
-    console.log(req.body.name);
-
-
+    const newCustomer = new customers({
+        name: req.query.name,
+        email: req.query.email,
+        contactNo: req.query.contactNo,
+        address: req.query.address
+    });
+    newCustomer.save();
+    // Show a plain alert
+    JSAlert.alert("Added new customer successfully");
+    res.redirect("/");
 });
-
 
 
 module.exports = router;
