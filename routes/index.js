@@ -3,7 +3,7 @@ var router = express.Router();
 const bodyParser = require("body-parser");
 var cors = require("cors");
 var JSAlert = require("js-alert");
-
+require('dotenv').config()
 
 router.options('*', cors())
 
@@ -11,7 +11,9 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(cors());
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://naveen:nnaveen@cluster0.u1nx4.mongodb.net/naveen', { useNewUrlParser: true, useUnifiedTopology: true });
+var DATABASE_URI=process.env.DATABASE_URI;
+
+mongoose.connect(DATABASE_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Database connectivity check
 const db = mongoose.connection;
@@ -22,6 +24,7 @@ db.once('open', function() {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    alert("Hi");
     res.render('index', { title: 'Express' });
 });
 
@@ -46,16 +49,6 @@ router.get("/allCustomers", function(req, res) {
     res.redirect('/')
 });
 
-
-// app.post("/compose", function(req, res){
-
-//     const post = new postsd ({
-//     title: req.body.postTitle,
-//     content: req.body.postBody
-//     });
-//     post.save();
-//     res.redirect("/");
-//   });
 
 
 router.get("/addCustomer", function(req, res) {
